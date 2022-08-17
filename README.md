@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Умный словарь.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+>Он анализирует текст который пользователь заугружает.
+Выделяет самые популярные слова. 
+Переводит те которые не находятся в стоплисте.
+дает слово транскрипцию и перевод. результат записывается в firebase.
+из  firebase можно скачать список для ANKI
+> Такой подход удобен для изучения новой лексики из текстов и предварительной подготовки к чтению сложных статей.
+> пользователь не отвлекается на незнакомые слова. он все уже изучил через приложение.
+> Он построен на create-react-app \
+>  Руководствуется принципом:  Document Design Development(DDD)
+который позволяет:
+>- создавать ясную документацию
+>- раскрывать идеи до их реализации
+>- экономить время на UI/UX
+>- Я его выбрал для проекта Цифровые ТЕхнологии в Философии, как наиболее органичного для этой сферы. ***от текста к программе***.
 
-## Available Scripts
+## Структура программы.
 
-In the project directory, you can run:
+папка компоненты сотоит из: 
 
-### `npm start`
+**inputTaker.js**
+- принимает текс для анализа
+- принимает текстовый и pdf документ
+- сохраняет текст с которым идет работа.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**languageLevel.js** 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- компонент определяет уровень владения пользователя. 
+- Исходя из него формируется
+список слов который он должен знать.   
+- Этислова записываются в stopWords.txt Эти слова не переводятся.
+- 
+**stopWords.txt**
 
-### `npm test`
+- обычные стоплова 
+- слова которые ползователь должен знать исходя из уровня.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**translateOPtions.js**
 
-### `npm run build`
+- определяет сколько слов выбрать для перевода 
+- длобавлять ли эти слова в stopWords.txt
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**buttons.js**
+- компонент кнопки.
+- кнопка принимает функцию обработчик
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**translater.js**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- содержит весь словарь
+- кнопки перевести, которая отображает в поле перевод
+- кнопку скачать перевод которая скачивает translate-date.txt
+- кнопку сохранить которая сохраняет перевод в firebase.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Иyструкция для пользователя
+1. авторизуйтесь.
+2. Вставьте текст в поле для текста. Перетащите pdf или txt  в поле. если хотите работать сос тарым текстом, нажимте загрузить. Если хотите с новым, нажмите новый текст.
+2. выберете свой уровень языка
+3. если хотите, чтобы слова из этой сессии больше не переводились нажмите  кнопку "запомнить".
+4. нажмите перевести.
+5. если хотите скачать спсисок переведенных слов нажмите скачать
+6. если хотите, чтобы эти слова сохранились для следующей сессии нажмите сохранить.
+7. если хотите импортировать в  [ANKI](https://apps.ankiweb.net/) нажмите импорт ANKI

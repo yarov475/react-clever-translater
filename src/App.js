@@ -1,23 +1,22 @@
 import logo from './logo.svg';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import './App.css';
+import Translater from "./components/translater";
+import LevelPicker from "./components/languageLevel";
+import Options from "./components/translateOPtions";
+import Todos from "./components/todos";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {/*<Translater/>*/}
+        {/*<Options/>*/}
+        {/*<LevelPicker/>*/}
+        <Todos/>
+        <hr/>
+
     </div>
   );
 }
