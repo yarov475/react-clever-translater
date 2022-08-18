@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import LevelPicker from "./languageLevel";
 import Options from "./translateOPtions";
-// import TextToIPA from "text-to-ipa";
+import TextToIPA from "text-to-ipa";
 
 /**
  * The main function gather ol features
